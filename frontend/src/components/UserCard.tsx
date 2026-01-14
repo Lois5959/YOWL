@@ -2,14 +2,14 @@ import '../App.css'
 
 function UserCard() {
 
-  return (
-    <nav className="font-bold top-50 z-10 w-full h-40 bg-white-400 shadow-md flex items-center justify-center relative">
-        <div className="flex gap-2 text-[25px] md:text-[45px]">
-            <span className="text-black">Oles</span>
-            <span className='text-black'>Basic fit Lille</span>
+    return (
+        <div className="md:mx-0 et md:ml-[350px] font-bold top-10 z-10 w-[300px] mx-auto h-40 bg-gray-100 shadow-md flex items-center justify-center relative">
+            <div className="flex gap-2 text-[25px] md:text-[45px]">
+                <span className="text-black font-bold text-[30px] ml-4 mt-20">Oles</span>
+                <span className='text-black text-[20px] font-medium'>Basic fit Lille</span>
+            </div>
         </div>
-    </nav>
-  )
+    )
 }
 
 export default UserCard
