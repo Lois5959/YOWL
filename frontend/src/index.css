@@ -3,12 +3,18 @@
 @layer components {
   .sidebaricon {
     @apply relative flex items-center justify-center
-      h-15 w-40 px-4
+      px-4
       bg-orange-400
-      text-white text-2xl font-semibold
+      text-white font-semibold
       rounded-full
       shadow-lg
       transition-all duration-300 ease-linear
       hover:bg-white hover:text-orange-500 hover:scale-105;
+
+    font-size: clamp(1rem, 2vw, 2rem);
+
+    height: clamp(3rem, 6vw, 4rem);
+    width: clamp(8rem, 20vw, 12rem);
+
   }
 }
