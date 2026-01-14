@@ -1,30 +1,27 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  mysql:
+  mysql_db:
     image: mysql:8
     container_name: mysql_db
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mvp_db
     ports:
-      - "8083:8083"
+      - "3307:3306" 
     volumes:
       - mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
-    restart: always
     depends_on:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root
+      - mysql_db
     ports:
-      - "8084:84"
+      - "8084:80"   
+    environment:
+      PMA_HOST: mysql_db
+      PMA_PORT: 3306
 
 volumes:
   mysql_data:
-
