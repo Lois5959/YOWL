@@ -1,10 +1,11 @@
-import Home from './pages/Home'
+import './App.css'
+import { Sidebar } from './assets/Sidebar.tsx'
 
 function App() {
+
   return (
-    <>
-      <Home />
-    </>
+    <Sidebar>
+    </Sidebar>
   )
 }
 
