@@ -1,9 +1,13 @@
-import Home from './pages/Home'
+import Navbar from './components/Navbar'
+import './App.css'
+import UserCard from './components/UserCard'
 
 function App() {
+
   return (
     <>
-      <Home />
+        <Navbar/>
+        <UserCard/>
     </>
   )
 }
