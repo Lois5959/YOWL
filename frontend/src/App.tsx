@@ -1,14 +1,11 @@
-import Navbar from './components/Navbar'
 import './App.css'
-import UserCard from './components/UserCard'
+import { Sidebar } from './assets/Sidebar.tsx'
 
 function App() {
 
   return (
-    <>
-        <Navbar/>
-        <UserCard/>
-    </>
+    <Sidebar>
+    </Sidebar>
   )
 }
 
