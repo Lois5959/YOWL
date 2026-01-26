@@ -1,18 +1,15 @@
-import '../App.css'
+import React from 'react';
 
-function Navbar() {
-
+export default function Navbar() {
   return (
-      <nav className="bg-[#2D427B] sticky top-0 z-50 w-full h-20 shadow-md flex items-center justify-center relative font-sans">
+    <nav className="w-full h-20 flex items-center justify-center relative z-20">
+      <div className="bg-[#2D427B] w-full h-full opacity-95 absolute top-0 left-0 -z-10 shadow-md"></div>
 
-        <img className="absolute left-4 h-15 object-contain" src="logo.png" alt='logo'></img>
-
-        <div className="flex gap-4 text-[25px] md:text-[45px] items-center">
-            <span className="text-white font-black tracking-tight">GYM</span>
-            <span className='text-white font-bold'>Connect</span>
+      <div className="flex items-center gap-3">
         </div>
+        <span className="text-white text-3xl font-black tracking-tight uppercase">
+            GYM Connect
+        </span>
     </nav>
   )
 }
-
-export default Navbar

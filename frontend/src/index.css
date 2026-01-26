@@ -2,24 +2,32 @@
 
 @layer components {
   .sidebaricon {
-    @apply relative flex items-center justify-center
+    @apply relative flex flex-col items-center justify-center
 
-      h-16 w-42 px-4
+      h-24 w-full
+      py-2
+
       bg-[#2D427B]
-      text-white text-2xl font-semibold
-      rounded-full
+      text-white text-lg font-semibold
+
+      rounded-r-3xl
+      rounded-l-none
+
       shadow-lg
-      transition-all duration-300 ease-linear
-      hover:bg-white hover:text-[#2D427B] hover:scale-105;
+      cursor-pointer
+      transition-all duration-300 ease-in-out
+
+      hover:bg-[#1e2e58] hover:pr-4 hover:w-[105%];
   }
+
   .usercard {
     @apply relative flex items-center justify-center
-      h-8 w-40 px-8
+      h-10 px-6
       bg-[#2D427B]
-      text-white text-base font-semibold
-      rounded-full
-      shadow-lg
-      transition-all duration-250 ease-linear
-      hover:bg-white hover:text-[#2D427B]  hover:scale-90;
-    }
+      text-white text-sm font-semibold
+      rounded-lg
+      shadow-md
+      transition-all duration-200 ease-linear
+      hover:bg-[#1e2e58] hover:scale-105;
+  }
 }
