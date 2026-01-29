@@ -31,10 +31,8 @@ export default function ChatApp() {
 
   return (
     <div className="flex h-full w-full bg-white overflow-hidden rounded-tl-3xl shadow-2xl">
-
-      <div className="w-80 flex-shrink-0 border-r border-gray-200 overflow-y-auto">
+      <div className="w-80 flex-shrink-0 border-r border-gray-200 overflow-y-auto hidden md:block">
         <div className="p-4 border-b font-bold text-xl text-gray-800">Messages</div>
-
         {initialConversations.map((c) => (
           <div
             key={c.id}
@@ -54,6 +52,7 @@ export default function ChatApp() {
           </div>
         ))}
       </div>
+
       <div className="flex-1 flex flex-col bg-gray-50">
         {activeConv && (
             <div className="p-4 bg-white border-b flex items-center shadow-sm">

@@ -9,10 +9,11 @@ const users = [
 
 export default function Feed() {
   return (
-    <div className="flex-1 p-8">
+    <div className="flex-1 h-full p-8 overflow-y-auto">
+
       <h2 className="text-white text-2xl font-bold mb-6 drop-shadow-md">Live Feed</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-24">
         {users.map((user) => (
           <div key={user.id} className="bg-white rounded-3xl p-5 shadow-xl flex flex-col justify-between">
 
@@ -25,7 +26,7 @@ export default function Feed() {
               <div>
                 <h3 className="font-bold text-xl text-black">{user.name} :</h3>
                 <ul className="text-sm text-gray-800 list-disc list-inside mt-1 space-y-1">
-                    <li>17h45 {user.gym}</li>
+                    <li>{user.gym}</li>
                     <li>{user.activity}</li>
                 </ul>
               </div>

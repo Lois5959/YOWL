@@ -14,7 +14,7 @@ export function Sidebar({ setPage }: SidebarProps) {
   ];
 
   return (
-    <aside className="w-32 pt-10 flex flex-col gap-4 pl-4 sticky top-20 h-[calc(100vh-80px)]">
+    <aside className="w-48 h-full flex flex-col gap-4 pt-8 pl-4 pr-2 overflow-hidden">
       {menuItems.map((item) => (
         <button
           key={item.label}
@@ -24,8 +24,8 @@ export function Sidebar({ setPage }: SidebarProps) {
             py-4 px-6
             flex flex-col items-center justify-center
             shadow-lg transition-transform hover:scale-105 origin-left
-
-            rounded-3xl  /* CORRECTION ICI : Arrondi des 4 côtés */
+            rounded-3xl
+            w-full
           "
         >
           <span className="text-2xl mb-1">{item.icon}</span>
