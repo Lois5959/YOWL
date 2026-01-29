@@ -10,7 +10,6 @@ export function Sidebar({ setPage }: SidebarProps) {
     { label: "Membres", icon: "👥", id: "feed" },
     { label: "Poster", icon: "➕", id: "feed" },
     { label: "Message", icon: "💬", id: "message" },
-    { label: "Profil", icon: "👤", id: "feed" },
   ];
 
   return (
