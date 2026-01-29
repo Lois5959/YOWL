@@ -1,4 +1,4 @@
-# Problem Statement : Gym Connect
+# Problem Statement
 
 ## Le Problème
 Pratiquer la musculation ou le fitness de manière régulière est un défi de discipline. Aujourd'hui, les sportifs font face à trois obstacles majeurs :

@@ -1,11 +1,11 @@
 # Benchmark : Concept Gym Connect
 
-## 📋 Présentation du projet
+## Présentation du projet
 **Gym Connect** est une plateforme de mise en relation permettant aux sportifs de poster leurs séances (heure, lieu, type d'entraînement) afin de trouver un partenaire pour ne plus s'entraîner seul.
 
 ---
 
-## 🔍 Analyse de la Concurrence
+## Analyse de la Concurrence
 
 | Solution | Cible | Points Forts | Points Faibles |
 | :--- | :--- | :--- | :--- |
@@ -16,7 +16,7 @@
 
 ---
 
-## 🚀 Opportunités pour Gym Connect
+## Opportunités pour Gym Connect
 
 Pour se démarquer des solutions existantes, Gym Connect doit se concentrer sur ces **3 piliers** :
 
@@ -35,11 +35,11 @@ Créer une section "Maintenant" pour ceux qui sont déjà à la salle et qui che
 
 ---
 
-## 🛠️ Stack Technique suggérée
+## Stack Technique suggérée
 * **Format :** Progressive Web App (PWA) pour un accès mobile rapide sans téléchargement.
 * **Fonctionnalités clés :** Géolocalisation, Calendrier dynamique, Messagerie instantanée.
 
 ---
 
-## 💡 Conclusion / Différenciateur
+## Conclusion / Différenciateur
 Le succès de **Gym Connect** reposera sur sa capacité à transformer un post vague ("je vais au sport") en un rendez-vous concret ("Séance Dos à 18h00 au Basic-Fit de Lille, niveau intermédiaire").

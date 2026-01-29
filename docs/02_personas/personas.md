@@ -1,4 +1,4 @@
-# Personas : Gym Connect
+# Personas
 
 Pour concevoir la meilleure expérience sur **Gym Connect**, nous avons identifié trois profils types d'utilisateurs.
 
