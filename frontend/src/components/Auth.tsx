@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
+import { API_URL } from '../api';
 
 interface AuthProps { onLogin: () => void; }
 
@@ -7,16 +9,16 @@ export default function Auth({ onLogin }: AuthProps) {
   const [formData, setFormData] = useState({ nom: "", email: "", password: "" });
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const endpoint = isLogin ? '/login' : '/register';
 
     try {
-      const res = await fetch(`http://localhost:3000/api/auth${endpoint}`, {
+      const res = await fetch(`${API_URL}/auth${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -34,12 +36,12 @@ export default function Auth({ onLogin }: AuthProps) {
       } else {
         setError(data.message || "Erreur lors de la connexion");
       }
-    } catch (err) { setError("Erreur serveur (vérifie Docker)"); }
+    } catch { setError("Serveur injoignable (vérifie que le backend tourne)"); }
   };
 
   return (
     <div className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-white z-50">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80')] bg-cover brightness-50" />
+      <div className="absolute inset-0 bg-[#1e2e58] bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80')] bg-cover brightness-50" />
 
       <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10">
         <h2 className="text-3xl font-black text-[#2D427B] mb-2 text-center">{isLogin ? 'Bon retour !' : 'Rejoins-nous !'}</h2>
