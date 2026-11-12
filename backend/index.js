@@ -1,35 +1,14 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 
-const db = require('./db');
+// Sans secret, n'importe qui pourrait signer ses propres jetons : on refuse de démarrer.
+if (!process.env.JWT_SECRET) {
+    console.error("JWT_SECRET manquant : copie .env.example en .env et renseigne-le.");
+    process.exit(1);
+}
 
-app.use(cors());
-app.use(express.json());
+const app = require('./app');
+const PORT = process.env.PORT || 3000;
 
-const authRoutes = require('./routes/auth');
-const messageRoutes = require('./routes/messages');
-
-app.use('/api/auth', authRoutes);
-app.use('/api/messages', messageRoutes);
-
-app.get('/', (req, res) => {
-    res.send("Le serveur fonctionne !");
-});
-
-app.get('/api/users', (req, res) => {
-    const sql = "SELECT id, nom, email FROM utilisateurs";
-
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error("Erreur SQL :", err);
-            return res.status(500).json({ error: err.message });
-        }
-        res.json(results);
-    });
-});
-
-app.listen(3000, () => {
-    console.log("Serveur démarré sur port 3000");
+app.listen(PORT, () => {
+    console.log(`Serveur démarré sur port ${PORT}`);
 });
