@@ -1,41 +1,64 @@
+name: gym-connect
+
+# Démarrage : cp .env.example .env && docker compose up --build
+# phpMyAdmin (facultatif) : docker compose --profile tools up
+
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: DockerFile
-    container_name: backend_container
-    env_file: .env
+  frontend:
+    build: ./frontend
     ports:
-      - "3000:3000"
+      - "8080:80"
     depends_on:
-      - mysql_db
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    command: sh -c "npm install && sleep 10 && npm start"
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: mysql_db
+      DB_PORT: 3306
+      DB_USER: ${MYSQL_USER:-gym}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-change-me-db}
+      DB_NAME: ${MYSQL_DATABASE:-mvp_db}
+      JWT_SECRET: "${JWT_SECRET:?JWT_SECRET manquant, copie .env.example en .env}"
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://localhost:5173}
+    ports:
+      - "127.0.0.1:3000:3000"   # pour npm run dev du front ; le public passe par Nginx
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    restart: unless-stopped
 
   mysql_db:
-    image: mysql:8
-    container_name: mysql_db
+    image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mvp_db
-    ports:
-      - "3307:3306"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change-me-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-mvp_db}
+      MYSQL_USER: ${MYSQL_USER:-gym}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change-me-db}
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./backend/schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backend/schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u\"$$MYSQL_USER\" -p\"$$MYSQL_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    image: phpmyadmin:5.2
+    profiles: ["tools"]
     depends_on:
-      - mysql_db
-    ports:
-      - "8084:80"
+      mysql_db:
+        condition: service_healthy
     environment:
       PMA_HOST: mysql_db
       PMA_PORT: 3306
+    ports:
+      - "127.0.0.1:8084:80"
 
 volumes:
   mysql_data:
